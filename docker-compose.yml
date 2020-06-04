@@ -4,19 +4,19 @@ services:
     image: nginx:stable
     container_name: nginx
     ports:
-      - "80:80"
+      - "9000:80"
     volumes:
-      - "./conf.d:/etc/nginx/conf.d"
+      - "./config/conf.d:/etc/nginx/conf.d"
     links:
-      - express
-
-  express:
-    image: node:8.9.0-alpine
-    container_name: express
-    hostname: express
+      - app
+  app:
+    image: node:13.14.0
+    container_name: app
+    hostname: app
     volumes:
-      - ".:/src"
+      - "./next:/src"
     working_dir: /src
     command: [sh, -c, npm install && npm run build && npm run start]
     ports:
       - "3000:3000"
+

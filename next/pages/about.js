@@ -1,5 +1,5 @@
 import Link from 'next/link'
-
+import { fetchData } from '../lib/fetch'
 export default() => {
   return (
     <div>

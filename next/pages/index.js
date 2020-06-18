@@ -8,6 +8,9 @@ const Index = props => {
       <Link href="/about">
         <a>About</a>
       </Link>
+      <Link href="/blog">
+        <a>Blog</a>
+      </Link>
     </div>
   )
 }
@@ -15,7 +18,8 @@ const Index = props => {
 export async function getStaticProps() {
   return {
     props: {
-      isServer: typeof window === 'undefined'
+      isServer: typeof window === 'undefined',
+      // getPostsData: getPostsData
     }
   }
 }

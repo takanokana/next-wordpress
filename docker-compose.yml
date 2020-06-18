@@ -1,14 +1,5 @@
 version: '3.8'
 services:
-  nginx:
-    image: nginx:stable
-    container_name: nginx
-    ports:
-      - "9000:80"
-    volumes:
-      - "./config/conf.d:/etc/nginx/conf.d"
-    links:
-      - app
   app:
     image: node:13.14.0
     container_name: app
@@ -16,7 +7,40 @@ services:
     volumes:
       - "./next:/src"
     working_dir: /src
-    command: [sh, -c, npm install && npm run build && npm run start]
+    command: [sh, -c, npm install &&  npm run dev]
     ports:
       - "3000:3000"
-
+    links:
+      - wordpress
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    container_name: "wiz_front_mysql"
+  wordpress:
+    build: ./init_comp
+    depends_on:
+      - db
+    links:
+      - db
+    container_name: "wiz_front_wp"
+    volumes:
+      - ./wordpress/mytheme:/var/www/html/wp/wp-content/themes/mytheme
+      - ./init_comp/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh
+      - ./init_comp/php.ini:/usr/local/etc/php/php.ini
+      - ./init_comp/wp-config.php:/usr/src/wordpress/wp-config.php
+    working_dir: /var/www/html
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_SUBDIRECTORY: wp

@@ -10,7 +10,7 @@ export default function Post({ postData }) {
         <title>{postData.title}</title>
       </Head>
       <article dangerouslySetInnerHTML={{ __html: postData.content}} />
-      <Link href="/"><a>Topへ戻る</a></Link>
+      <Link href="/Blog"><a>Blog一覧へ戻る</a></Link>
     </PostLayout>
   )
 }

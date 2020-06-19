@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { fetchData } from '../lib/fetch'
-export default() => {
+export default function About() {
   return (
     <div>
       <h1>このページについて</h1>

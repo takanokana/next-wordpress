@@ -1,16 +1,22 @@
 import Link from 'next/link'
-
+import styles from './index.module.scss'
 const Index = props => {
   return (
     <div>
       <h1>トップページ</h1>
       <p>現在はサーバー側でレンダリング{props.isServer? 'された' : 'されてない'}</p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
+      <div
+      >
+        <Link href="/About">
+          <a className={styles.linkBtn}>About</a>
+        </Link>
+        <Link href="/Blog">
+          <a className={styles.linkBtn}>Blog</a>
+        </Link>
+        <Link href="/Categories">
+          <a className={styles.linkBtn}>Categories</a>
+        </Link>
+      </div>
     </div>
   )
 }

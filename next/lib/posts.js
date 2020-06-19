@@ -1,14 +1,9 @@
 import { postsUrl } from '../lib/url'
+import { catchData } from './fetch'
 
-
-async function catchData() {
-  const res = await fetch(postsUrl)
-  const posts = await res.json()
-  return posts
-}
-
+// 投稿取得
 export async function getPostsIds() {
-  const allData = await catchData()
+  const allData = await catchData(postsUrl)
   return allData.map(post => {
     return {
       params: {
@@ -19,7 +14,7 @@ export async function getPostsIds() {
 }
 
 export async function getPostData(id) {
-  const allData = await catchData()
+  const allData = await catchData(postsUrl)
   const thisPost = allData.find(post => post.id == id)
   return {
     id,
@@ -29,7 +24,7 @@ export async function getPostData(id) {
 }
 
 export async function getAllPostDataFunc() {
-  const allData = await catchData()
+  const allData = await catchData(postsUrl)
   const allPostData = allData.map( post => {
     return {
       id: post.id,
@@ -38,3 +33,4 @@ export async function getAllPostDataFunc() {
   })
   return allPostData
 }
+

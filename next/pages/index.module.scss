@@ -1,0 +1,12 @@
+.linkBtn {
+  display: block;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  color: #333;
+  width: 100px;
+  background: #e7ffb0;
+  transition: .3s;
+  &:hover {
+    opacity: .6;
+  }
+}

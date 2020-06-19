@@ -1,10 +1,10 @@
-import { fetchData, getAllPostDataFunc } from '../lib/posts'
+import { getAllPostDataFunc } from '../lib/posts'
 import Link from 'next/link'
 
 const Blog = ({allPostsData}) => {
   return (
     <div>
-      <div>ブログ記事一覧</div>
+      <h1>ブログ記事一覧</h1>
       <ul>
         {allPostsData.map(({id, title}) => {
           return(

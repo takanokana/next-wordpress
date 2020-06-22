@@ -1,4 +1,4 @@
-import PostLayout from '../../components/postLayput'
+import PostLayout from '../../components/postLayout'
 import Head from 'next/head'
 import Link from 'next/link'
 import { getPostsIds, getPostData } from '../../lib/posts'
@@ -10,7 +10,7 @@ export default function Post({ postData }) {
         <title>{postData.title}</title>
       </Head>
       <article dangerouslySetInnerHTML={{ __html: postData.content}} />
-      <Link href="/Blog"><a>Blog一覧へ戻る</a></Link>
+      <Link href="/blog"><a>Blog一覧へ戻る</a></Link>
     </PostLayout>
   )
 }

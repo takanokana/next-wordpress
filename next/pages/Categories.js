@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllCatDataFunc } from '../lib/posts'
+import { getAllCatDataFunc } from '../lib/cats'
 
 const Categories = ({allCatData}) => {
   return (
@@ -11,7 +11,9 @@ const Categories = ({allCatData}) => {
             <li
               key={`cat_${id}`}
             >
-              {name}
+              <Link href="/cats/[slug]" as={`/cats/${slug}`}>
+                <a>{name}</a>
+              </Link>
             </li>
           )
         })}

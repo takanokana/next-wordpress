@@ -7,13 +7,13 @@ const Index = props => {
       <p>現在はサーバー側でレンダリング{props.isServer? 'された' : 'されてない'}</p>
       <div
       >
-        <Link href="/About">
+        <Link href="/about">
           <a className={styles.linkBtn}>About</a>
         </Link>
-        <Link href="/Blog">
+        <Link href="/blog">
           <a className={styles.linkBtn}>Blog</a>
         </Link>
-        <Link href="/Categories">
+        <Link href="/categories">
           <a className={styles.linkBtn}>Categories</a>
         </Link>
       </div>

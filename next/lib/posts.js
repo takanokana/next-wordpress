@@ -1,7 +1,7 @@
+// 投稿取得 idを元に判別
 import { postsUrl } from '../lib/url'
 import { catchData } from './fetch'
 
-// 投稿取得
 export async function getPostsIds() {
   const allData = await catchData(postsUrl)
   return allData.map(post => {

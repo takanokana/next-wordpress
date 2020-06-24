@@ -1,6 +1,8 @@
 // カテゴリー取得 slugを元に判別
 import { catchData } from './fetch'
 import { catsUrl } from '../lib/url'
+import { catPostUrl } from '../lib/url'
+
 
 export async function getAllCatDataFunc() {
   const allData = await catchData(catsUrl)
@@ -28,8 +30,11 @@ export async function getCatsSlugs() {
 export async function getCatData(slug) {
   const allData = await catchData(catsUrl)
   const thisCat = allData.find(cat => cat.slug == slug)
+  // 記事IDから記事を検索
+  const postData = await catchData (catPostUrl + thisCat.id)
   return {
     slug,
     name: thisCat.name,
+    posts: postData
   }
 }

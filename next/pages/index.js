@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import styles from './index.module.scss'
-import WPAPI from 'wpapi'
 
 const Index = props => {
   return (
@@ -27,7 +26,6 @@ export async function getStaticProps() {
   return {
     props: {
       isServer: typeof window === 'undefined',
-      // getPostsData: getPostsData
     }
   }
 }

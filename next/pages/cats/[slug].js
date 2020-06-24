@@ -1,5 +1,4 @@
 import CatLayout from '../../components/catLayout'
-import Head from 'next/head'
 import Link from 'next/link'
 import { getCatsSlugs, getCatData } from '../../lib/cats'
 

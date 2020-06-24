@@ -1,7 +1,5 @@
 // カテゴリー取得 slugを元に判別
-import { catchData } from './fetch'
-import { catsUrl, wp } from '../lib/url'
-import { catPostUrl } from '../lib/url'
+import { wp } from '../lib/url'
 
 
 export async function getAllCatDataFunc() {

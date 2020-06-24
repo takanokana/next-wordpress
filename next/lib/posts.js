@@ -1,5 +1,5 @@
 // 投稿取得 idを元に判別
-import { postsUrl, wp } from '../lib/url'
+import { wp } from '../lib/url'
 
 export async function getPostsIds() {
   const allData = await wp.posts()

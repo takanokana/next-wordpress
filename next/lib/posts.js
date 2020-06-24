@@ -1,9 +1,8 @@
 // 投稿取得 idを元に判別
-import { postsUrl } from '../lib/url'
-import { catchData } from './fetch'
+import { postsUrl, wp } from '../lib/url'
 
 export async function getPostsIds() {
-  const allData = await catchData(postsUrl)
+  const allData = await wp.posts()
   return allData.map(post => {
     return {
       params: {
@@ -14,7 +13,7 @@ export async function getPostsIds() {
 }
 
 export async function getPostData(id) {
-  const allData = await catchData(postsUrl)
+  const allData = await wp.posts()
   const thisPost = allData.find(post => post.id == id)
   return {
     id,
@@ -24,7 +23,7 @@ export async function getPostData(id) {
 }
 
 export async function getAllPostDataFunc() {
-  const allData = await catchData(postsUrl)
+  const allData = await wp.posts()
   const allPostData = allData.map( post => {
     return {
       id: post.id,

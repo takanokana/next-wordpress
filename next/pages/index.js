@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import styles from './index.module.scss'
+import WPAPI from 'wpapi'
+
 const Index = props => {
   return (
     <div>

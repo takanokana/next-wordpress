@@ -5,7 +5,6 @@ import { getCatsSlugs, getCatData } from '../../lib/cats'
 
 // カテゴリ名を取得した後, カテゴリslugを元に記事一覧を取得
 export default function Post({ catData }) {
-  console.log(catData)
   return (
     <CatLayout>
       <h1>{catData.name}</h1>
